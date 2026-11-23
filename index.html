@@ -252,7 +252,7 @@
       .brand { gap: 8px; font-size: 1.42rem; }
       .brand-mark { width: 34px; height: 34px; font-size: 1rem; }
       .nav-links { gap: 14px; }
-      .nav-links a:not(.button):not([href="#deals"]) { display: none; }
+      .nav-links a:not(.button):not([href="#deals"]):not([href="about.html"]) { display: none; }
       .nav-links .button { min-height: 40px; padding-inline: 14px; font-size: .76rem; }
       .hero { min-height: auto; padding: 64px 0 57px; }
       .hero-grid { grid-template-columns: 1fr; gap: 0; }
@@ -302,14 +302,14 @@
 <body>
   <header class="site-header">
     <nav class="nav wrap" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Beast Burger home">
+      <a class="brand" href="index.html#home" aria-label="Beast Burger home">
         <span class="brand-mark" aria-hidden="true">🍔</span>
         <span>Beast Burger</span>
       </a>
       <div class="nav-links">
         <a href="#menu">The menu</a>
         <a href="#deals">Deals</a>
-        <a href="#about">Our story</a>
+        <a href="about.html">About</a>
         <a class="button" href="#order">Order now <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
@@ -504,7 +504,7 @@
   <footer class="site-footer">
     <div class="footer-grid wrap">
       <div class="footer-brand">
-        <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">🍔</span><span>Beast Burger</span></a>
+        <a class="brand" href="index.html#home"><span class="brand-mark" aria-hidden="true">🍔</span><span>Beast Burger</span></a>
         <p>Unleash the Beast.</p>
       </div>
       <div class="footer-details">
