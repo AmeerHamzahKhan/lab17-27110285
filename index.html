@@ -188,6 +188,39 @@
     .deals-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
     .deal-card { min-height: 244px; background: var(--card); }
 
+    .build-section { padding: 92px 0 100px; background: var(--card); }
+    .build-grid { display: grid; grid-template-columns: 1fr .8fr; gap: 18px; }
+    .build-panel, .build-summary { padding: 25px; border: 1px solid var(--line); border-radius: 12px; background: var(--background); }
+    .build-panel { display: grid; gap: 25px; }
+    .build-group { display: grid; gap: 12px; margin: 0; padding: 0; border: 0; }
+    .build-group legend { margin-bottom: 12px; font-family: var(--heading); font-size: 1.55rem; }
+    .build-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .build-choice, .build-extra {
+      display: flex;
+      min-height: 54px;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: .79rem;
+      font-weight: 700;
+    }
+    .build-choice:has(input:checked), .build-extra:has(input:checked) { border-color: var(--accent); }
+    .build-choice input, .build-extra input { width: 17px; min-height: 17px; margin: 0; accent-color: var(--accent); }
+    .build-choice span, .build-extra span { display: flex; flex-direction: column; }
+    .build-choice small, .build-extra small { color: var(--muted); font-size: .68rem; font-weight: 500; }
+    .build-extras { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .build-quantity { display: grid; max-width: 180px; gap: 8px; font-size: .75rem; font-weight: 700; }
+    .build-quantity select { min-height: 46px; padding: 0 12px; border: 1px solid var(--line); border-radius: 7px; background: var(--background); color: var(--text); font: inherit; }
+    .build-summary { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+    .build-summary > span { color: var(--muted); font-size: .8rem; }
+    .build-total { margin: 8px 0 10px; color: var(--accent); font-family: var(--heading); font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1; }
+    .build-summary p { margin-bottom: 24px; color: var(--muted); font-size: .78rem; }
+    .build-summary .button { width: 100%; }
+    .build-status { min-height: 1.3em; margin: 14px 0 0; color: var(--accent); font-size: .75rem; }
+
     .about-section { padding: 100px 0; }
     .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 80px; }
     .about-art {
@@ -245,6 +278,7 @@
       .deals-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .about-grid { gap: 38px; }
       .order-grid { gap: 35px; }
+      .build-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
       .wrap { width: min(100% - 32px, 480px); }
@@ -252,7 +286,7 @@
       .brand { gap: 8px; font-size: 1.42rem; }
       .brand-mark { width: 34px; height: 34px; font-size: 1rem; }
       .nav-links { gap: 14px; }
-      .nav-links a:not(.button):not([href="#deals"]):not([href="about.html"]) { display: none; }
+      .nav-links a:not(.button):not([href="#deals"]):not([href="#build"]):not([href="about.html"]) { display: none; }
       .nav-links .button { min-height: 40px; padding-inline: 14px; font-size: .76rem; }
       .hero { min-height: auto; padding: 64px 0 57px; }
       .hero-grid { grid-template-columns: 1fr; gap: 0; }
@@ -263,7 +297,7 @@
       .art-glow { width: 270px; }
       .burst { top: 7%; right: 8%; }
       .hero-note { margin-top: 27px; }
-      .menu-section, .deals-section, .about-section { padding: 69px 0; }
+      .menu-section, .deals-section, .build-section, .about-section { padding: 69px 0; }
       .section-heading { display: block; margin-bottom: 35px; }
       .section-heading > p { margin-top: 12px; }
       .menu-category + .menu-category { margin-top: 38px; }
@@ -275,6 +309,9 @@
       .badge { font-size: .58rem; }
       .small-grid { max-width: none; }
       .deal-card { min-height: 225px; }
+      .build-panel, .build-summary { padding: 18px; }
+      .build-choices { grid-template-columns: 1fr; }
+      .build-extras { grid-template-columns: 1fr; }
       .about-grid, .order-grid { grid-template-columns: 1fr; gap: 33px; }
       .about-art { min-height: 250px; }
       .about-art span { font-size: 6rem; }
@@ -288,6 +325,7 @@
       .brand { gap: 6px; font-size: 1.2rem; }
       .brand-mark { width: 30px; height: 30px; }
       .nav-links { gap: 8px; }
+      .nav-links a[href="about.html"] { display: none; }
       .nav-links .button { padding-inline: 9px; font-size: .7rem; }
       .menu-grid, .deals-grid { grid-template-columns: 1fr; }
       .menu-card { min-height: 195px; }
@@ -309,6 +347,7 @@
       <div class="nav-links">
         <a href="#menu">The menu</a>
         <a href="#deals">Deals</a>
+        <a href="#build">Build</a>
         <a href="about.html">About</a>
         <a class="button" href="#order">Order now <span aria-hidden="true">↗</span></a>
       </div>
@@ -446,6 +485,64 @@
       </div>
     </section>
 
+    <section class="build-section" id="build">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Make it yours</span>
+            <h2>Build Your Beast.</h2>
+          </div>
+          <p>Pick your stack, load it up and make it legendary.</p>
+        </div>
+        <div class="build-grid">
+          <div class="build-panel">
+            <fieldset class="build-group">
+              <legend>Choose your patty</legend>
+              <div class="build-choices">
+                <label class="build-choice">
+                  <input type="radio" name="patty" value="Single" data-price="650" checked>
+                  <span>Single<small>Rs 650</small></span>
+                </label>
+                <label class="build-choice">
+                  <input type="radio" name="patty" value="Double" data-price="950">
+                  <span>Double<small>Rs 950</small></span>
+                </label>
+                <label class="build-choice">
+                  <input type="radio" name="patty" value="Triple" data-price="1250">
+                  <span>Triple<small>Rs 1,250</small></span>
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="build-group">
+              <legend>Load up the extras</legend>
+              <div class="build-extras">
+                <label class="build-extra"><input type="checkbox" value="Cheese" data-price="100"><span>Cheese<small>Rs 100</small></span></label>
+                <label class="build-extra"><input type="checkbox" value="Jalapeños 🌶️" data-price="80"><span>Jalapeños 🌶️<small>Rs 80</small></span></label>
+                <label class="build-extra"><input type="checkbox" value="Fried Egg" data-price="120"><span>Fried Egg<small>Rs 120</small></span></label>
+                <label class="build-extra"><input type="checkbox" value="Extra Sauce" data-price="50"><span>Extra Sauce<small>Rs 50</small></span></label>
+              </div>
+            </fieldset>
+            <label class="build-quantity" for="build-quantity">Quantity
+              <select id="build-quantity" name="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
+          </div>
+          <div class="build-summary">
+            <span>Your Beast total</span>
+            <output class="build-total" id="build-total" aria-live="polite">Rs 650</output>
+            <p id="build-description">Single patty · Quantity 1</p>
+            <button class="button" id="add-to-order" type="button">Add to Order <span aria-hidden="true">→</span></button>
+            <p class="build-status" id="build-status" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="about-section" id="about">
       <div class="about-grid wrap">
         <div class="about-art" role="img" aria-label="Illustration of a burger with a flame"><span aria-hidden="true">🍔</span></div>
@@ -519,6 +616,43 @@
     const form = document.querySelector("#order-form");
     const phoneInput = document.querySelector("#customer-phone");
     const formStatus = document.querySelector("#form-status");
+    const buildInputs = document.querySelectorAll("#build input, #build-quantity");
+    const buildTotal = document.querySelector("#build-total");
+    const buildDescription = document.querySelector("#build-description");
+    const buildStatus = document.querySelector("#build-status");
+    const orderItem = document.querySelector("#order-item");
+
+    function updateBuildTotal() {
+      const patty = document.querySelector('input[name="patty"]:checked');
+      const extras = [...document.querySelectorAll("#build .build-extra input:checked")];
+      const quantity = Number(document.querySelector("#build-quantity").value);
+      const unitPrice = Number(patty.dataset.price) + extras.reduce((total, extra) => total + Number(extra.dataset.price), 0);
+      const total = unitPrice * quantity;
+      const parts = [patty.value, ...extras.map((extra) => extra.value)];
+
+      buildTotal.textContent = `Rs ${total.toLocaleString("en-US")}`;
+      buildDescription.textContent = `${parts.join(" · ")} · Quantity ${quantity}`;
+      return { parts, quantity, total };
+    }
+
+    buildInputs.forEach((input) => input.addEventListener("change", () => {
+      updateBuildTotal();
+      buildStatus.textContent = "";
+    }));
+
+    document.querySelector("#add-to-order").addEventListener("click", () => {
+      const { parts, quantity, total } = updateBuildTotal();
+      const label = `Build Your Beast — ${parts.join(", ")}, Quantity ${quantity} — Rs ${total.toLocaleString("en-US")}`;
+      let customOption = orderItem.querySelector('option[value="custom-build"]');
+      if (!customOption) {
+        customOption = new Option("", "custom-build");
+        orderItem.add(customOption);
+      }
+      customOption.textContent = label;
+      orderItem.value = "custom-build";
+      buildStatus.textContent = "Your Beast is in the order form. Add your details to finish!";
+      document.querySelector("#order").scrollIntoView({ behavior: "smooth" });
+    });
 
     phoneInput.addEventListener("input", () => {
       const digits = phoneInput.value.replace(/\D/g, "").slice(0, 11);
