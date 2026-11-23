@@ -184,6 +184,10 @@
     .price { margin-top: auto; color: var(--accent); font-size: .9rem; font-weight: 800; }
     .small-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px; }
 
+    .deals-section { padding: 92px 0 100px; }
+    .deals-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .deal-card { min-height: 244px; background: var(--card); }
+
     .about-section { padding: 100px 0; }
     .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 80px; }
     .about-art {
@@ -238,6 +242,7 @@
       .hero-art { min-height: 340px; }
       .burst { right: 0; width: 91px; height: 91px; font-size: 1.3rem; }
       .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .deals-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .about-grid { gap: 38px; }
       .order-grid { gap: 35px; }
     }
@@ -247,7 +252,7 @@
       .brand { gap: 8px; font-size: 1.42rem; }
       .brand-mark { width: 34px; height: 34px; font-size: 1rem; }
       .nav-links { gap: 14px; }
-      .nav-links a:not(.button) { display: none; }
+      .nav-links a:not(.button):not([href="#deals"]) { display: none; }
       .nav-links .button { min-height: 40px; padding-inline: 14px; font-size: .76rem; }
       .hero { min-height: auto; padding: 64px 0 57px; }
       .hero-grid { grid-template-columns: 1fr; gap: 0; }
@@ -258,7 +263,7 @@
       .art-glow { width: 270px; }
       .burst { top: 7%; right: 8%; }
       .hero-note { margin-top: 27px; }
-      .menu-section, .about-section { padding: 69px 0; }
+      .menu-section, .deals-section, .about-section { padding: 69px 0; }
       .section-heading { display: block; margin-bottom: 35px; }
       .section-heading > p { margin-top: 12px; }
       .menu-category + .menu-category { margin-top: 38px; }
@@ -269,6 +274,7 @@
       .food-icon { font-size: 2rem; }
       .badge { font-size: .58rem; }
       .small-grid { max-width: none; }
+      .deal-card { min-height: 225px; }
       .about-grid, .order-grid { grid-template-columns: 1fr; gap: 33px; }
       .about-art { min-height: 250px; }
       .about-art span { font-size: 6rem; }
@@ -278,7 +284,12 @@
       .footer-details { justify-content: flex-start; gap: 8px 18px; }
     }
     @media (max-width: 360px) {
-      .menu-grid { grid-template-columns: 1fr; }
+      .nav { gap: 8px; }
+      .brand { gap: 6px; font-size: 1.2rem; }
+      .brand-mark { width: 30px; height: 30px; }
+      .nav-links { gap: 8px; }
+      .nav-links .button { padding-inline: 9px; font-size: .7rem; }
+      .menu-grid, .deals-grid { grid-template-columns: 1fr; }
       .menu-card { min-height: 195px; }
       .order-form { grid-template-columns: 1fr; }
       .field.full, .form-note, .order-form .button, .form-status { grid-column: 1; }
@@ -297,6 +308,7 @@
       </a>
       <div class="nav-links">
         <a href="#menu">The menu</a>
+        <a href="#deals">Deals</a>
         <a href="#about">Our story</a>
         <a class="button" href="#order">Order now <span aria-hidden="true">↗</span></a>
       </div>
@@ -398,6 +410,38 @@
               <span class="price">Rs 650</span>
             </article>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="deals-section" id="deals">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Big bites, better value</span>
+            <h2>Beast Deals.</h2>
+          </div>
+          <p>Go bigger. Bring your crew. Make every bite count.</p>
+        </div>
+        <div class="deals-grid">
+          <article class="menu-card deal-card">
+            <div class="menu-card-top"><span class="food-icon" aria-hidden="true">🍔</span><span class="badge">🔥 BEST-SELLER</span></div>
+            <h4>Beast Meal</h4>
+            <p>1 Beast Burger, fries and a drink.</p>
+            <span class="price">Rs 1,450</span>
+          </article>
+          <article class="menu-card deal-card">
+            <div class="menu-card-top"><span class="food-icon" aria-hidden="true">🍔</span><span class="badge">DOUBLE THE BEAST</span></div>
+            <h4>Double Trouble</h4>
+            <p>2 burgers and 2 drinks. Bring your partner in crime.</p>
+            <span class="price">Rs 2,600</span>
+          </article>
+          <article class="menu-card deal-card">
+            <div class="menu-card-top"><span class="food-icon" aria-hidden="true">🥤</span><span class="badge">LATE-NIGHT DEAL</span></div>
+            <h4>Midnight Munch</h4>
+            <p>Burger and shake. Valid 11 pm to 2 am.</p>
+            <span class="price">Rs 1,250</span>
+          </article>
         </div>
       </div>
     </section>
